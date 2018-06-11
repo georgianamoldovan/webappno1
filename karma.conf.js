@@ -32,9 +32,9 @@ module.exports = function(config) {
         type: 'html', //produces a html document after code is run
         subdir: 'client'
       }, {
-        type: 'json',
+        type: 'cobertura',
         subdir: '.',
-        file: 'client-coverage.json'
+        file: 'client-coverage.xml'
       }],
       dir: 'coverage/' //path to created html doc
     },
@@ -43,7 +43,7 @@ module.exports = function(config) {
       require('karma-chrome-launcher'),
       require('karma-coverage'),
       require('karma-firefox-launcher'),
-
+      require('karma-junit-reporter'),      //custom add M
       require('karma-jasmine'),
       require('karma-spec-reporter'),
       require('karma-phantomjs-launcher'),
@@ -69,7 +69,12 @@ module.exports = function(config) {
     // - junit
     // - growl
     // - coverage
-    reporters: ['spec', 'coverage'],
+    reporters: ['dots', 'progress', 'spec', 'coverage', 'junit'],
+    
+    junitReporter: {
+      outputDir: 'coverage',
+      outputFile: 'karma-results.xml'
+    },
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,

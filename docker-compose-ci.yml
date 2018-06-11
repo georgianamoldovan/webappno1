@@ -1,12 +1,16 @@
 version: '2'
 services:
-  app:
-    image: webappno1
+  app:    
+    image: webappno1-ci        
+    container_name: webappno1-ci
+    build:
+      context: .
+      dockerfile: Dockerfile-ci
     environment:
       NODE_ENV: production
-      MONGODB_URI: mongodb://mongo/webappno1
+      MONGODB_URI: mongodb://mongo/webappno1-ci
     ports:
-      - 10000:8080
+      - 10001:8080
   mongo:
     image: mongo:3.4.2
     volumes:

@@ -25,10 +25,10 @@
     </div>
 
     <div class="row">
-        <h1 class="page-header">{{$ctrl.nume}}(
+        <h1 class="page-header">My List (
             <span>
                     {{$ctrl.myItems.length}}
-                <ng-pluralize count="$ctrl.myItems.length" when="{ one: 'item', other: 'items' }"></ng-pluralize>
+                <ng-pluralize count="$ctrl.myItems.length" when="{ one: 'item left', other: 'items left' }"></ng-pluralize>
             </span>
         ):
         </h1>

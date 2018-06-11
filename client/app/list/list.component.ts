@@ -25,7 +25,7 @@ export class ListComponent {
   newMember;
 
   loggedUser;
-nume;
+
   ownerView = false;
   /*@ngInject*/
   constructor($http, $scope, socket, $state, Auth, $document) {
@@ -45,7 +45,7 @@ nume;
 
   $onInit() {
     var vm = this;
-    //this.nume = 'test';
+
     this.loadingItems = true;
 
     this.setStatusFilter('all');
@@ -54,13 +54,6 @@ nume;
       this.myItems = response.data;
       this.socket.syncUpdates('item', this.myItems);
     });
-
-    this.$http.get('/api/lists/' + this.idList).then(response => {
-      this.nume = response.data.name;
-      //console.log('jjj '+this.nume.name);
-      this.socket.syncUpdates('nume', this.nume);
-    });
-    //*/
 
     this.$http.get('/api/userlists/' + this.idList + '/users').then(response => {
       this.myUserLists = response.data;
